@@ -19,7 +19,6 @@ public class Student {
 	private String sEmail;
 	private String sPhone;
 	
-	
 	public Student() {
 
 	}
