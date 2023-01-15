@@ -2,6 +2,7 @@ package com.exam.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,15 +18,14 @@ import com.exam.model.Teacher;
 import com.exam.service.TeacherService;
 
 @RestController
-@RequestMapping("/teacher")
 @CrossOrigin("*")
 public class TeacherController {
 	
+	@Autowired
+	private TeacherService teacherService;
 	
-	TeacherService teacherService;
 	
-	
-	@PostMapping("/")
+	@PostMapping("/teacher")
 	public Teacher addTeacher(@RequestBody Teacher teacher) {
 		return this.teacherService.addTeacher(teacher);	
 		
@@ -33,7 +33,7 @@ public class TeacherController {
 	
 	
 
-	@PutMapping("/")
+	@PutMapping("/teacher")
 	public Teacher updateTeacher(@RequestBody Teacher teacher) {
 		return this.teacherService.updateTeacher(teacher);	
 		
@@ -46,14 +46,14 @@ public class TeacherController {
 		
 	}
 	
-	@GetMapping("/{tid}")
+	@GetMapping("/teacher/{tid}")
 	public Teacher getstudentById(@PathVariable("tid") Long tid) {
 		return this.teacherService.getTeacher(tid);
 	}
 	
 	
 	
-	@DeleteMapping("/{tid}")
+	@DeleteMapping("/teacher/{tid}")
 	public void deleteTeacher(@PathVariable("tid") Long tid) {
 		this.teacherService.deleteTeacher(tid);
 	}
